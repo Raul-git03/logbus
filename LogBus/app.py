@@ -30,11 +30,11 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 def conectar_banco():
     return mariadb.connect(
-        host="localhost",
-        port=3306,
-        user="root",
-        password="dbtransporte",
-        database="transporte"
+        host=os.getenv("MYSQLHOST"),
+        port=int(os.getenv("MYSQLPORT")),
+        user=os.getenv("MYSQLUSER"),
+        password=os.getenv("MYSQLPASSWORD"),
+        database=os.getenv("MYSQLDATABASE")
     )
 
 # ===================================
@@ -70,12 +70,12 @@ def apenas_aluno(f):
 # ===================================
 
 @app.errorhandler(404)
-def pagina_nao_encontrada(e):
-    return render_template('erros/404.html'), 404
+def erro404(error):
+    return "Erro 404", 404
 
 @app.errorhandler(500)
-def erro_interno(e):
-    return render_template('erros/500.html'), 500
+def erro500(error):
+    return "Erro 500", 500
 
 @app.errorhandler(403)
 def acesso_negado_handler(e):
