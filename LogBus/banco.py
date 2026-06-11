@@ -3,11 +3,11 @@ import os
 
 def conectar_banco():
     return mariadb.connect(
-        host=os.getenv("mysql.railway.internal"),
-        port=int(os.getenv("3306")),
-        user=os.getenv("root"),
-        password=os.getenv("zzqhmgbftsVJRKMPanziHRgHWpmBbHwH"),
-        database=os.getenv("railway")
+        host=os.getenv("MYSQLHOST"),
+        port=int(os.getenv("MYSQLPORT")),
+        user=os.getenv("MYSQLUSER"),
+        password=os.getenv("MYSQLPASSWORD"),
+        database=os.getenv("MYSQLDATABASE")
     )
 
 
