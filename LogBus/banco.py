@@ -1,13 +1,13 @@
 import mariadb
-
+import os
 
 def conectar_banco():
     return mariadb.connect(
-        host="localhost",
-        port=3306,
-        user="root",
-        password="dbtransporte",
-        database="transporte"
+        host=os.getenv("mysql.railway.internal"),
+        port=int(os.getenv("3306")),
+        user=os.getenv("root"),
+        password=os.getenv("zzqhmgbftsVJRKMPanziHRgHWpmBbHwH"),
+        database=os.getenv("railway")
     )
 
 

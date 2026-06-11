@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template, redirect, url_for, send_file, session
 from functools import wraps
-import banco
+from LogBus import banco
 import mariadb
 import os
 from werkzeug.utils import secure_filename
@@ -718,4 +718,7 @@ def dashboard():
     )
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(
+        host='0.0.0.0',
+        port=int(os.environ.get('PORT', 5000))
+    )
